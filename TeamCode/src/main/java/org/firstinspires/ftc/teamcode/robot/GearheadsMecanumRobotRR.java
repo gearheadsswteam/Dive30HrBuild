@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
-
+import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 
 
 /**
@@ -28,6 +28,8 @@ public class GearheadsMecanumRobotRR {
 
     private LinearOpMode curOpMode = null;   //current opmode
 
+    public SampleMecanumDrive drive;
+
     /* local OpMode members. */
     public HardwareMap hwMap = null;
 
@@ -35,6 +37,8 @@ public class GearheadsMecanumRobotRR {
     public GearheadsMecanumRobotRR(LinearOpMode opMode) {
         this.curOpMode = opMode;
         hwMap = opMode.hardwareMap;
+        drive = new SampleMecanumDrive(hwMap);
+
     }
 
 
