@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.robot.GearheadsMecanumRobotRR;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
+import org.firstinspires.ftc.teamcode.vision.PropDetector;
 
 public abstract class AbstractAutonomous extends LinearOpMode {
     public enum Case {
@@ -16,7 +17,7 @@ public abstract class AbstractAutonomous extends LinearOpMode {
 
     protected TrajectorySequence trajleft, trajCenter, trajRight;
     public static final int minDetected = 10;
-
+    protected PropDetector detector;
     protected Side side;
     protected Case runCase = Case.CENTER;
     protected Case detectCase = Case.CENTER;
@@ -24,23 +25,21 @@ public abstract class AbstractAutonomous extends LinearOpMode {
 
     public abstract void initAutonomous();
 
-
     public void initOpMode() {
         robot = new GearheadsMecanumRobotRR(this);
         initAutonomous();
     }
 
-
     public void waitOpMode() {
-//        if (detectCase == detector.getCase()) {
-//            detected++;
-//        } else {
-//            detectCase = detector.getCase();
-//            detected = 0;
-//        }
-//        if (detected >= minDetected) {
-//            runCase = detectCase;
-//        }
+        if (detectCase == detector.getCase()) {
+            detected++;
+        } else {
+            detectCase = detector.getCase();
+            detected = 0;
+        }
+        if (detected >= minDetected) {
+            runCase = detectCase;
+        }
 
         telemetry.addData("Case Detected", detectCase);
         telemetry.addData("Case to Run", runCase);
@@ -49,9 +48,14 @@ public abstract class AbstractAutonomous extends LinearOpMode {
 
 
     public void startOpMode() {
-        //detector.close();
-        robot.drive.followTrajectorySequenceAsync(trajCenter);
-
+        detector.close();
+        if(Case.CENTER == runCase){
+            robot.drive.followTrajectorySequenceAsync(trajCenter);
+        }else if(Case.LEFT == runCase){
+            robot.drive.followTrajectorySequenceAsync(trajCenter);
+        }else if(Case.RIGHT == runCase){
+            robot.drive.followTrajectorySequenceAsync(trajCenter);
+        }
     }
 
     //@Override

@@ -14,6 +14,7 @@ import org.firstinspires.ftc.teamcode.drive.DriveConstants;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequenceBuilder;
+import org.firstinspires.ftc.teamcode.vision.PropDetector;
 
 //@Photon
 @Autonomous(name = "RedFarStateMiddleLane", group = "Red", preselectTeleOp = "TwoDrive")
@@ -27,10 +28,6 @@ public class RedFarStateMiddleLane extends AbstractAutonomous {
     public Pose2d intermediatePostDrop2 = new Pose2d(55,10,-PI / 2);
     public Pose2d board = new Pose2d(30, -25, -PI / 2);
     public Pose2d stackR = new Pose2d(48,79,-PI / 2);
-
-    public Pose2d toDelete = new Pose2d(48,79,-PI / 2);
-
-
 
     private TrajectorySequence initTrajectory(Case caseToRun) {
         side = ValueStorage.Side.RED;
@@ -85,7 +82,7 @@ public class RedFarStateMiddleLane extends AbstractAutonomous {
 
     @Override
     public void initAutonomous() {
-        // detector = new PropDetector(this, false, ValueStorage.Side.RED);
+        detector = new PropDetector(this, false, ValueStorage.Side.RED);
         robot.drive.setPoseEstimate(startFar);
 
         trajCenter = initTrajectory(CENTER);
