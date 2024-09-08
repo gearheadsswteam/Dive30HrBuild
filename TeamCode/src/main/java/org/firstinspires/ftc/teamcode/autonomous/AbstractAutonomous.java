@@ -31,31 +31,12 @@ public abstract class AbstractAutonomous extends LinearOpMode {
     }
 
     public void waitOpMode() {
-        if (detectCase == detector.getCase()) {
-            detected++;
-        } else {
-            detectCase = detector.getCase();
-            detected = 0;
-        }
-        if (detected >= minDetected) {
-            runCase = detectCase;
-        }
-
-        telemetry.addData("Case Detected", detectCase);
-        telemetry.addData("Case to Run", runCase);
 
     }
 
 
     public void startOpMode() {
-        detector.close();
-        if(Case.CENTER == runCase){
-            robot.drive.followTrajectorySequenceAsync(trajCenter);
-        }else if(Case.LEFT == runCase){
-            robot.drive.followTrajectorySequenceAsync(trajCenter);
-        }else if(Case.RIGHT == runCase){
-            robot.drive.followTrajectorySequenceAsync(trajCenter);
-        }
+        robot.drive.followTrajectorySequenceAsync(trajCenter);
     }
 
     //@Override

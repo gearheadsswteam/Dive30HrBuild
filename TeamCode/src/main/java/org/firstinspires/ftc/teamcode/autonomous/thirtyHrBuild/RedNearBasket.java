@@ -16,7 +16,7 @@ import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequenceBuild
 
 //@Photon
 @Autonomous(name = "BlueBasket", group = "Blue", preselectTeleOp = "TwoDrive")
-public class BlueNearBasket extends AbstractAutonomous {
+public class RedNearBasket extends AbstractAutonomous {
 
     public static Pose2d start = new Pose2d(36, 60, PI);
 
@@ -36,8 +36,7 @@ public class BlueNearBasket extends AbstractAutonomous {
                 .setAccelConstraint(SampleMecanumDrive.getAccelerationConstraint(40));
         //Start and deliver purple pixel on left, center or right on tape
         //What spline path do we need
-        builder
-                .setReversed(true)
+        builder.setReversed(true)
                 .splineTo(basketDrop.vec(), PI / 4)
 
                 .setReversed(false)

@@ -5,6 +5,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
+import org.firstinspires.ftc.teamcode.actionParts.Elevator;
+import org.firstinspires.ftc.teamcode.actionParts.Intake;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 
 
@@ -33,6 +35,10 @@ public class GearheadsMecanumRobotRR {
     /* local OpMode members. */
     public HardwareMap hwMap = null;
 
+    public Intake intake;
+
+    public Elevator elevator;
+
     /* Constructor */
     public GearheadsMecanumRobotRR(LinearOpMode opMode) {
         this.curOpMode = opMode;
@@ -56,6 +62,8 @@ public class GearheadsMecanumRobotRR {
     private void init(HardwareMap ahwMap) {
         // Save reference to Hardware map
         hwMap = ahwMap;
+        intake = new Intake(curOpMode);
+        elevator = new Elevator();
 
     }
 }
