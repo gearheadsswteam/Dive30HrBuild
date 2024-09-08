@@ -15,7 +15,7 @@ import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.teamcode.classes.Robot;
 import org.firstinspires.ftc.teamcode.robot.GearheadsMecanumRobotRR;
 
-@TeleOp(name = "TeleOpRedBlue30HR")
+@TeleOp(name = "TeleOpRedBlue30HRV2")
 public class TeleOp30HBuildV2 extends LinearOpMode {
 
     Robot robot = new Robot();
@@ -101,9 +101,7 @@ public class TeleOp30HBuildV2 extends LinearOpMode {
             if (armState == 0) {
                 if (armStateTime.milliseconds() > 2000) {
                     gearheadsMecanumRobotRR.elevator.goInitPosition();
-                    gearheadsMecanumRobotRR.intake.goToIntakePosition();
-                    gearheadsMecanumRobotRR.intake.startIntake();
-                    gearheadsMecanumRobotRR.intake.openClaw();
+                    gearheadsMecanumRobotRR.claw.openClaw();
 
                     armState = 1;
                     armStateTime.reset();
@@ -111,16 +109,15 @@ public class TeleOp30HBuildV2 extends LinearOpMode {
 
             } else if (armState == 1) {
                 if (armStateTime.milliseconds() > 2000) {
-                    gearheadsMecanumRobotRR.intake.goToDeliveryPosition();
-                    gearheadsMecanumRobotRR.intake.stopIntake();
-                    gearheadsMecanumRobotRR.intake.closeClaw();
+
+                    gearheadsMecanumRobotRR.claw.closeClaw();
+
                     armState = 2;
                     armStateTime.reset();
                 }
 
             } else if (armState == 2) {
                 if (armStateTime.milliseconds() > 1000) {
-                    gearheadsMecanumRobotRR.intake.goToIntakePosition();
                     gearheadsMecanumRobotRR.elevator.goHighBasket();
 
                     armState = 3;
@@ -130,9 +127,7 @@ public class TeleOp30HBuildV2 extends LinearOpMode {
 
             } else if (armState == 3) {
                 if (armStateTime.milliseconds() > 2000) {
-                    gearheadsMecanumRobotRR.intake.openClaw();
-                    sleep(1000);
-                    gearheadsMecanumRobotRR.elevator.goInitPosition();
+                    gearheadsMecanumRobotRR.claw.openClaw();
 
                     armState = 0;
                     armStateTime.reset();
@@ -140,5 +135,4 @@ public class TeleOp30HBuildV2 extends LinearOpMode {
             }
         }
     }
-
 }

@@ -21,9 +21,9 @@ public class SparkFunOTOSLocalizer extends StandardTrackingWheelLocalizer {
     public void update() {
         //Use SparkFunOTOS to get poseEstimate and poseVelocity
         SparkFunOTOS.Pose2D position = sparkFunOTOS.getPosition();
-        super.setPoseEstimate(new Pose2d(position.x, position.y, position.h));
+        super.setPoseEstimate(new Pose2d(position.x, position.y, Math.toRadians(position.h)));
         SparkFunOTOS.Pose2D velocity = sparkFunOTOS.getVelocity();
-        super.setPoseVelocity(new Pose2d(velocity.x, velocity.y, velocity.h));
+        super.setPoseVelocity(new Pose2d(velocity.x, velocity.y, Math.toRadians(velocity.h)));
 
     }
 }
