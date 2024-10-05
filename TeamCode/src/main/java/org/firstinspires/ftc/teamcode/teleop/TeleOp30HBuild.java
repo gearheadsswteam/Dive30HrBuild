@@ -70,6 +70,7 @@ public class TeleOp30HBuild extends LinearOpMode {
             moveMagnitude = 0;
         }
         turn = pow(gamepad1.right_stick_x, 3);
+        turn = -turn;
         if (abs(turn) < 0.01) {
             turn = 0;
         }

@@ -7,6 +7,7 @@ import static java.lang.Math.cos;
 import static java.lang.Math.pow;
 import static java.lang.Math.sin;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -16,6 +17,7 @@ import org.firstinspires.ftc.teamcode.classes.Robot;
 import org.firstinspires.ftc.teamcode.robot.GearheadsMecanumRobotRR;
 
 @TeleOp(name = "TeleOpRedBlue30HRV2")
+@Disabled
 public class TeleOp30HBuildV2 extends LinearOpMode {
 
     Robot robot = new Robot();
