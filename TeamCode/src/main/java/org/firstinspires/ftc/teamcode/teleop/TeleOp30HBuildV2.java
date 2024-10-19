@@ -17,7 +17,7 @@ import org.firstinspires.ftc.teamcode.classes.Robot;
 import org.firstinspires.ftc.teamcode.robot.GearheadsMecanumRobotRR;
 
 @TeleOp(name = "TeleOpRedBlue30HRV2")
-@Disabled
+//@Disabled
 public class TeleOp30HBuildV2 extends LinearOpMode {
 
     Robot robot = new Robot();
@@ -42,6 +42,7 @@ public class TeleOp30HBuildV2 extends LinearOpMode {
         robot.init(hardwareMap);
         gearheadsMecanumRobotRR = new GearheadsMecanumRobotRR(this);
         gearheadsMecanumRobotRR.initTeleop(hardwareMap);
+        gearheadsMecanumRobotRR.light.initTeleLights();
 
         while (!opModeIsActive() && !isStopRequested()) {
             time = clock.seconds();
@@ -58,11 +59,17 @@ public class TeleOp30HBuildV2 extends LinearOpMode {
 
             moveRobot();
             liftStatemachine();
+            changeLight();
 
 
         }
     }
 
+    private void changeLight() {
+        if (gamepad1.b) {
+            gearheadsMecanumRobotRR.light.scoreLights();
+        }
+    }
 
     private void moveRobot() {
         robotHeading = robot.getHeading() + initialHeading;

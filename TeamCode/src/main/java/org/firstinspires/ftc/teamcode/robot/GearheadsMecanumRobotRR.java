@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.actionParts.Claw;
 import org.firstinspires.ftc.teamcode.actionParts.Elevator;
+import org.firstinspires.ftc.teamcode.actionParts.Light;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.drive.sparkFunOTOS.SparkFunOTOSDrive;
 
@@ -38,13 +39,15 @@ public class GearheadsMecanumRobotRR {
 
     public Elevator elevator;
 
+    public Light light;
+
     /* Constructor */
     public GearheadsMecanumRobotRR(LinearOpMode opMode) {
         this.curOpMode = opMode;
         hwMap = opMode.hardwareMap;
-        drive = new SampleMecanumDrive(hwMap);
+        //drive = new SampleMecanumDrive(hwMap);
         //TODO - use SparkFun OTOS Drive
-        //drive = new SparkFunOTOSDrive(opMode,hwMap);
+        drive = new SparkFunOTOSDrive(opMode,hwMap);
 
 
     }
@@ -66,6 +69,7 @@ public class GearheadsMecanumRobotRR {
         hwMap = ahwMap;
 //        claw = new Claw(curOpMode);
 //        elevator = new Elevator();
+        light = new Light(curOpMode);
 
     }
 }
